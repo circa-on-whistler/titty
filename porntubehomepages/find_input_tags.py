@@ -16,9 +16,9 @@ def find_parent_form(tag):
 
 def parse_and_print(html_src):
 	html = BeautifulSoup(html_src, features="html.parser")
-	for input_tag in html.select('input [type=text]'): #, attrs={"type", "text"}):
+	for input_tag in html.find_all("input", attrs={"type", "text"}):
 		parent_form = find_parent_form(input_tag)
-		print(parent_form)
+		#print(parent_form)
 		if parent_form != None:
 			print ("\ttag: " + str(input_tag) + " / form: " + str(parent_form))
 		else:
